@@ -1,69 +1,56 @@
 package models;
 
+import play.data.format.Formats;
+import play.data.validation.Constraints;
+import play.db.ebean.Model;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.List;
 
-@Entity(name = "task")
-public class Task {
+@Entity
+@Table(name = "tasks")
+public class Task extends Model {
 
     @Id
-    private int id;
+    private Long id;
 
+    @Constraints.Required
+    @Formats.NonEmpty
     private String description;
 
-    private Status status;
+    public static Finder<Long,Task> find = new Finder(Integer.class, Task.class);
 
-    private Priority priority;
-
-    public Task (String description, Status status, Priority priority) {
-        this.description = description;
-        this.status = status;
-        this.priority = priority;
-    }
-
-    public int getId () {
+    public Long getId () {
         return id;
-    }
-
-    public void setId (int id) {
-        this.id = id;
     }
 
     public String getDescription () {
         return description;
     }
 
-    public void setDescription (String description) {
-        this.description = description;
+    public static List<Task> all() {
+        return find.all();
     }
 
-    public Status getStatus () {
-        return status;
+    public static void create(Task task) {
     }
 
-    public void setStatus (Status status) {
-        this.status = status;
+    public static void delete(Long id) {
     }
 
-    public Priority getPriority () {
-        return priority;
-    }
-
-    public void setPriority (Priority priority) {
-        this.priority = priority;
-    }
-
-    public enum Status {
-        NEW("New"), OPEN("Open"), CLOSED("Closed");
-
-        private String title;
-
-        private Status(String title) {
-            this.title = title;
-        }
-
-        public String getTitle() {
-            return this.title;
-        }
-    }
+//    public enum Status {
+//        NEW("New"), OPEN("Open"), CLOSED("Closed");
+//
+//        private String title;
+//
+//        private Status(String title) {
+//            this.title = title;
+//        }
+//
+//        public String getTitle() {
+//            return this.title;
+//        }
+//    }
 }
