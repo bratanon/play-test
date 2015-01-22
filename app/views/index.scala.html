@@ -1,7 +1,21 @@
-@(message: String)
+@(form: Form[Task], tasks: List[Task])
 
-@main("Welcome to Play") {
+@main("WATWAT") {
+    <h1>@tasks.size task(s)</h1>
 
-    @play20.welcome(message, style = "Java")
+    @helper.form(routes.TaskController.addTask()) {
 
+        @if(form.hasGlobalErrors) {
+            <p class="error">
+            @form.globalError
+            </p>
+        }
+
+        <p>
+            <input type="text" name="description" placeholder="Description" value="@form("description").value" autocomplete="off">
+        </p>
+        <p>
+            <button type="submit">Add</button>
+        </p>
+    }
 }
