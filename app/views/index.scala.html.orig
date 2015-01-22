@@ -1,14 +1,21 @@
-@import views.html.utils._sk], tasks: List[Task])
+@(form: Form[Task], tasks: List[Task])
 
 @import utils._
 
 @main("WATWAT") {
 	<h1>@tasks.size task(s)</h1>
 
-
-	@for(t <- tasks) {
-		@task(t)
+<<<<<<< HEAD
+	<ul>
+	@for(task <- tasks) {
+		<li><a href="/tasks/@task.getId">@task.getDescription()</a></li>
 	}
+	</ul>
+=======
+    @for(t <- tasks) {
+        @task(t)
+    }
+>>>>>>> b45dff48e006f577f33e7a454b0efafc6d3a97f9
 
 	@helper.form(routes.TaskController.addTask()) {
 

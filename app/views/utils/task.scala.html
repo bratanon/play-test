@@ -1,0 +1,5 @@
+@(task: models.Task)
+<section>
+  <h4><a href="/tasks/@task.getId">@task.getDescription()</a></h4>
+  <a href="@routes.TaskController.removeTask(task.getId())">Delete</a>
+</section>

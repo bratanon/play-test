@@ -22,7 +22,9 @@ public class TaskController extends Controller {
 	public static Result addTask() {
 		Form<Task> taskForm = form(Task.class).bindFromRequest();
 
+<<<<<<< HEAD
 		if (taskForm.hasErrors()) {
+			System.out.println("ERROR");
 			return badRequest(index.render(taskForm, Task.all()));
 		}
 		Task task = taskForm.get();
@@ -35,11 +37,20 @@ public class TaskController extends Controller {
 		Task task = (Task) new Model.Finder(String.class, Task.class).byId(id);
 		return ok(Json.toJson(task));
 	}
+=======
+        if(taskForm.hasErrors()) {
+            return badRequest(index.render(taskForm, Task.all()));
+        }
+        Task task = taskForm.get();
+        task.save();
 
-	public static Result removeTask(Long id) {
-		Task.delete(id);
+        return redirect(routes.TaskController.index());
+    }
 
-		return redirect(routes.TaskController.index());
-	}
+    public static Result removeTask(Long id) {
+        Task.delete(id);
 
+        return redirect(routes.TaskController.index());
+    }
+>>>>>>> b45dff48e006f577f33e7a454b0efafc6d3a97f9
 }

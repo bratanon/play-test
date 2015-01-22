@@ -3,13 +3,24 @@
 # ~~~~
 
 # Home page
+<<<<<<< HEAD
+GET         /                    controllers.Application.index()
+
+# Tasks
+GET         /tasks               controllers.TaskController.index()
+POST        /tasks               controllers.TaskController.addTask()
+GET         /tasks/:id           controllers.TaskController.getTask(id: Int)
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file        controllers.Assets.at(path="/public", file)
+=======
 GET         /                        controllers.Application.index()
 
 # Tasks
 GET         /tasks                   controllers.TaskController.index()
 POST        /tasks                   controllers.TaskController.addTask()
-GET         /tasks/:id               controllers.TaskController.getTask(id: Int)
 GET         /tasks/:id/delete        controllers.TaskController.removeTask(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file            controllers.Assets.at(path="/public", file)
+>>>>>>> b45dff48e006f577f33e7a454b0efafc6d3a97f9
