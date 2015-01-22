@@ -13,4 +13,6 @@ class Priority(aId: Int, aName: String) extends Model {
 	@Column(name = "name")
 	val name: String = aName
 
+	def sdjkkasdj = println("sdfhjkls")
+
 }

@@ -1,4 +1,4 @@
-@import views.html.utils._sk], tasks: List[Task])
+@(form: Form[Task], tasks: List[Task])
 
 @import utils._
 
@@ -6,9 +6,9 @@
 	<h1>@tasks.size task(s)</h1>
 
 
-	@for(t <- tasks) {
-		@task(t)
-	}
+    @for(t <- tasks) {
+        @task(t)
+    }
 
 	@helper.form(routes.TaskController.addTask()) {
 
@@ -22,7 +22,6 @@
 			<ul class="error">
 			@for(error <- form.errors) {
 				<li>@error.toString()</li>
-				
 			}
 			</ul>
 		}
