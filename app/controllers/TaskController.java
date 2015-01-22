@@ -21,6 +21,7 @@ public class TaskController extends Controller {
         Form<Task> taskForm = form(Task.class).bindFromRequest();
 
         if(taskForm.hasErrors()) {
+            System.out.println("ERROR");
             return badRequest(index.render(taskForm, Task.all()));
         }
         Task task = taskForm.get();

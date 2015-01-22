@@ -20,7 +20,7 @@ public class Task extends Model {
     @Formats.NonEmpty
     private String description;
 
-    public static Finder<Long,Task> find = new Finder(Integer.class, Task.class);
+    public static Finder<Long,Task> find = new Finder<>(Long.class, Task.class);
 
     public Long getId () {
         return id;
@@ -30,11 +30,16 @@ public class Task extends Model {
         return description;
     }
 
-    public static List<Task> all() {
-        return find.all();
+    public void setId (Long id) {
+        this.id = id;
     }
 
-    public static void create(Task task) {
+    public void setDescription (String description) {
+        this.description = description;
+    }
+
+    public static List<Task> all() {
+        return find.all();
     }
 
     public static void delete(Long id) {

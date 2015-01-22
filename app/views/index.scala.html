@@ -3,12 +3,26 @@
 @main("WATWAT") {
     <h1>@tasks.size task(s)</h1>
 
+    <ul>
+    @for(task <- tasks) {
+        <li>@task.getDescription()</li>
+    }
+    </ul>
+
     @helper.form(routes.TaskController.addTask()) {
 
         @if(form.hasGlobalErrors) {
             <p class="error">
             @form.globalError
             </p>
+        }
+
+        @if(form.hasErrors) {
+            <ul class="error">
+            @for(error <- form.errors) {
+                <li>@error.toString()</li>
+            }
+            </ul>
         }
 
         <p>
