@@ -21,11 +21,16 @@ public class TaskController extends Controller {
         Form<Task> taskForm = form(Task.class).bindFromRequest();
 
         if(taskForm.hasErrors()) {
-            System.out.println("ERROR");
             return badRequest(index.render(taskForm, Task.all()));
         }
         Task task = taskForm.get();
         task.save();
+
+        return redirect(routes.TaskController.index());
+    }
+
+    public static Result removeTask(Long id) {
+        Task.delete(id);
 
         return redirect(routes.TaskController.index());
     }

@@ -1,13 +1,13 @@
 @(form: Form[Task], tasks: List[Task])
 
+@import utils._
+
 @main("WATWAT") {
     <h1>@tasks.size task(s)</h1>
 
-    <ul>
-    @for(task <- tasks) {
-        <li>@task.getDescription()</li>
+    @for(t <- tasks) {
+        @task(t)
     }
-    </ul>
 
     @helper.form(routes.TaskController.addTask()) {
 

@@ -26,12 +26,12 @@ public class Task extends Model {
         return id;
     }
 
-    public String getDescription () {
-        return description;
-    }
-
     public void setId (Long id) {
         this.id = id;
+    }
+
+    public String getDescription () {
+        return description;
     }
 
     public void setDescription (String description) {
@@ -43,6 +43,7 @@ public class Task extends Model {
     }
 
     public static void delete(Long id) {
+        find.ref(id).delete();
     }
 
 //    public enum Status {
