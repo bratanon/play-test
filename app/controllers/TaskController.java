@@ -2,6 +2,8 @@ package controllers;
 
 import models.Task;
 import play.data.Form;
+import play.db.ebean.Model;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.index;
@@ -13,20 +15,25 @@ import static play.data.Form.form;
  */
 public class TaskController extends Controller {
 
-    public static Result index() {
-        return ok(index.render(form(Task.class), Task.all()));
-    }
+	public static Result index() {
+		return ok(index.render(form(Task.class), Task.all()));
+	}
 
-    public static Result addTask() {
-        Form<Task> taskForm = form(Task.class).bindFromRequest();
+	public static Result addTask() {
+		Form<Task> taskForm = form(Task.class).bindFromRequest();
 
-        if(taskForm.hasErrors()) {
-            System.out.println("ERROR");
-            return badRequest(index.render(taskForm, Task.all()));
-        }
-        Task task = taskForm.get();
-        task.save();
+		if (taskForm.hasErrors()) {
+			System.out.println("ERROR");
+			return badRequest(index.render(taskForm, Task.all()));
+		}
+		Task task = taskForm.get();
+		task.save();
 
-        return redirect(routes.TaskController.index());
-    }
+		return redirect(routes.TaskController.index());
+	}
+
+	public static Result getTask(int id) {
+		Task task = (Task) new Model.Finder(String.class, Task.class).byId(id);
+		return ok(Json.toJson(task));
+	}
 }

@@ -1,35 +1,35 @@
 @(form: Form[Task], tasks: List[Task])
 
 @main("WATWAT") {
-    <h1>@tasks.size task(s)</h1>
+	<h1>@tasks.size task(s)</h1>
 
-    <ul>
-    @for(task <- tasks) {
-        <li>@task.getDescription()</li>
-    }
-    </ul>
+	<ul>
+	@for(task <- tasks) {
+		<li><a href="/tasks/@task.getId">@task.getDescription()</a></li>
+	}
+	</ul>
 
-    @helper.form(routes.TaskController.addTask()) {
+	@helper.form(routes.TaskController.addTask()) {
 
-        @if(form.hasGlobalErrors) {
-            <p class="error">
-            @form.globalError
-            </p>
-        }
+		@if(form.hasGlobalErrors) {
+			<p class="error">
+			@form.globalError
+			</p>
+		}
 
-        @if(form.hasErrors) {
-            <ul class="error">
-            @for(error <- form.errors) {
-                <li>@error.toString()</li>
-            }
-            </ul>
-        }
+		@if(form.hasErrors) {
+			<ul class="error">
+			@for(error <- form.errors) {
+				<li>@error.toString()</li>
+			}
+			</ul>
+		}
 
-        <p>
-            <input type="text" name="description" placeholder="Description" value="@form("description").value" autocomplete="off">
-        </p>
-        <p>
-            <button type="submit">Add</button>
-        </p>
-    }
+		<p>
+			<input type="text" name="description" placeholder="Description" value="@form("description").value" autocomplete="off">
+		</p>
+		<p>
+			<button type="submit">Add</button>
+		</p>
+	}
 }
