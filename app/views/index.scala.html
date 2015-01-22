@@ -5,9 +5,8 @@
 @main("WATWAT") {
 	<h1>@tasks.size task(s)</h1>
 
-
     @for(t <- tasks) {
-        @task(t)
+        @taskListItem(t)
     }
 
 	@helper.form(routes.TaskController.addTask()) {
