@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 100%;
+  line-height: 1.2em;
+  padding:0;
+  margin:0;
+}
+
+a {
+  color: #F9DC8E;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+p {
+  margin: 0 0 1.3em 0;
+}
+
+p:last-of-type { margin-bottom: 0; }
+
+h1,h2,h3,h4,h5,h6 {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+input {
+  width:100%;
+}
+
+header {
+  background-color: #088B7D;
+  color: #fff;
+  padding: 1em;
+}
+
+section#main {
+  padding: 1em;
+}
+
+section#main > section {
+  padding: 1em;
+  background-color: #6CAF9D;
+  border-radius: 4px;
+}
+
+section#main > section > h2 { margin-top: 0; }
+
+section.task-form {
+  float:left;
+  width: calc(50% - 10px);
+}
+
+section.task-list {
+  float:right;
+  width: calc(50% - 10px);
+}
+
+article {
+  overflow: inherit;
+}
+
+article h3 {
+  float:left;
+  margin: 0;
+}
+
+article footer {
+  float:right;
+}
+
+article a.button {
+  border-radius: 4px;
+  background-color: #AEEFDB;
+  color: #333;
+  padding: 2px 5px;
+  text-decoration: none;
+}
+
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success {
+  background: rgb(28, 184, 65); /* this is a green */
+}
+
+.button-error {
+  background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.button-warning {
+  background: rgb(223, 117, 20); /* this is an orange */
+}
+
+.button-secondary {
+  background: rgb(66, 184, 221); /* this is a light blue */
+}

@@ -2,14 +2,10 @@
 
 @import utils._
 
-@main("WATWAT") {
-	<h1>@tasks.size task(s)</h1>
-
-    @for(t <- tasks) {
-        @taskListItem(t)
-    }
-
-	@helper.form(routes.TaskController.addTask()) {
+@main("TODO") {
+	<section class="task-form">
+		<h2>Add new task</h2>
+	@helper.form(routes.TaskController.addTask(), 'class -> "pure-form") {
 
 		@if(form.hasGlobalErrors) {
 			<p class="error">
@@ -29,7 +25,16 @@
 			<input type="text" name="description" placeholder="Description" value="@form("description").value" autocomplete="off">
 		</p>
 		<p>
-			<button type="submit">Add</button>
+			<button type="submit" class="pure-button pure-button-primary">Add</button>
 		</p>
 	}
+	</section>
+
+	<section class="task-list">
+		<h2>@tasks.size task(s)</h2>
+
+		@for(t <- tasks) {
+			@taskListItem(t)
+		}
+	</section>
 }
